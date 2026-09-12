@@ -1,0 +1,92 @@
+{
+  "name": "@webkernelai/next",
+  "version": "1.0.1",
+  "description": "Official Next.js SDK for WebKernelAI - Real-time Edge WAF, cryptographic HMAC verification, security headers, and AI-first SEO intelligence.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./middleware": {
+      "import": {
+        "types": "./dist/middleware/index.d.mts",
+        "default": "./dist/middleware/index.mjs"
+      },
+      "require": {
+        "types": "./dist/middleware/index.d.ts",
+        "default": "./dist/middleware/index.js"
+      }
+    },
+    "./api": {
+      "import": {
+        "types": "./dist/api/index.d.mts",
+        "default": "./dist/api/index.mjs"
+      },
+      "require": {
+        "types": "./dist/api/index.d.ts",
+        "default": "./dist/api/index.js"
+      }
+    },
+    "./seo": {
+      "import": {
+        "types": "./dist/components/index.d.mts",
+        "default": "./dist/components/index.mjs"
+      },
+      "require": {
+        "types": "./dist/components/index.d.ts",
+        "default": "./dist/components/index.js"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "node --test dist/tests/**/*.test.js || tsx tests/signer.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "webkernelai",
+    "nextjs",
+    "waf",
+    "edge-middleware",
+    "security",
+    "hmac-sha256",
+    "security-headers",
+    "aeo",
+    "seo",
+    "json-ld"
+  ],
+  "author": "WebKernelAI Team <support@webkernelai.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "next": ">=13.0.0 || >=14.0.0 || >=15.0.0",
+    "react": ">=18.0.0 || >=19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.48",
+    "next": "^14.2.0",
+    "react": "^18.2.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  }
+}
