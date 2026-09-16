@@ -1,4 +1,4 @@
-﻿import { NextRequest, NextResponse } from 'next/server.js';
+import { NextRequest, NextResponse } from 'next/server.js';
 import { Signer } from '../core/signer.js';
 import { WebKernelConfig, HandshakePayload } from '../types.js';
 
@@ -71,9 +71,40 @@ export function createWebKernelApiHandler(config: WebKernelConfig = {}) {
         // no-op
       }
 
+      const action = data.action || 'ping';
+
+      // Full parity with WebKernelAI Dashboard / PHP SDK protocol
+      if (action === 'ping' || action === 'capabilities' || action === 'info') {
+        return NextResponse.json({
+          status: 'ok',
+          success: true,
+          message: 'WebKernelAI Next.js SDK Active',
+          version: '1.0.1',
+          platform: 'Next.js',
+          site_id: siteId,
+          capabilities: [
+            'ping',
+            'info',
+            'control-config',
+            'security-hardening',
+            'security-headers-apply',
+            'advanced-security',
+            'text-controls',
+            'schemas',
+          ],
+          health: {
+            status: 'healthy',
+            uptime: process.uptime ? Math.floor(process.uptime()) : 0,
+            wafEnabled: config.waf?.enabled !== false,
+          },
+          timestamp: Math.floor(Date.now() / 1000),
+        });
+      }
+
       return NextResponse.json({
+        status: 'ok',
         success: true,
-        received_action: data.action || 'sync',
+        received_action: action,
         synced_at: new Date().toISOString(),
       });
     }
