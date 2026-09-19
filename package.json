@@ -1,14 +1,15 @@
 {
   "name": "@webkernelai/next",
-  "version": "1.0.2",
-  "description": "Official Next.js SDK for WebKernelAI - Real-time Edge WAF, cryptographic HMAC verification, security headers, and AI-first SEO intelligence.",
-  "homepage": "https://webkernelai.com/nextjs-sdk",
+  "version": "1.0.3",
+  "description": "Official Next.js SDK for WebKernelAI. Implements real-time Edge WAF filtering, cryptographic HMAC-SHA256 verification, secure production HTTP headers, and dynamic AEO JSON-LD schemas.",
+  "homepage": "https://webkernelai.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/WebKernelAI/webkernelai-next.git"
+    "url": "git+https://github.com/WebKernelAI/webkernelai-next.git"
   },
   "bugs": {
-    "url": "https://github.com/WebKernelAI/webkernelai-next/issues"
+    "url": "https://github.com/WebKernelAI/webkernelai-next/issues",
+    "email": "support@webkernelai.com"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -69,13 +70,17 @@
   "keywords": [
     "webkernelai",
     "nextjs",
-    "waf",
+    "nextjs-security",
     "edge-middleware",
+    "edge-waf",
+    "waf",
     "security",
     "hmac-sha256",
+    "hmac-verification",
     "security-headers",
     "aeo",
     "seo",
+    "technical-seo",
     "json-ld"
   ],
   "author": "WebKernelAI Team <support@webkernelai.com>",
