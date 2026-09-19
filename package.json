@@ -1,7 +1,15 @@
 {
   "name": "@webkernelai/next",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Official Next.js SDK for WebKernelAI - Real-time Edge WAF, cryptographic HMAC verification, security headers, and AI-first SEO intelligence.",
+  "homepage": "https://webkernelai.com/nextjs-sdk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WebKernelAI/webkernelai-next.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WebKernelAI/webkernelai-next/issues"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
