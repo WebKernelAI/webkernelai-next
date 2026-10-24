@@ -1,4 +1,4 @@
-﻿export interface WebKernelConfig {
+export interface WebKernelConfig {
   siteId?: string;
   pairingSecret?: string;
   apiUrl?: string;
@@ -47,6 +47,11 @@ export interface HandshakePayload {
   status: string;
   version: string;
   platform: string;
+  runtime?: {
+    nodeVersion: string;
+    eolStatus: 'supported' | 'maintenance' | 'eol';
+    vulnerable: boolean;
+  };
   health: {
     status: 'healthy' | 'degraded' | 'error';
     uptime: number;

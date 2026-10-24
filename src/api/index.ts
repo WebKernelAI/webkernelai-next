@@ -13,6 +13,20 @@ export function createWebKernelApiHandler(config: WebKernelConfig = {}) {
 
     // Handle Cloud Handshake / Health Probe (GET)
     if (request.method === 'GET') {
+      const nodeVersion = typeof process !== 'undefined' && process.version ? process.version : 'unknown';
+      let eolStatus: 'supported' | 'maintenance' | 'eol' = 'supported';
+      let vulnerable = false;
+
+      const major = parseInt(nodeVersion.replace(/^v/, '').split('.')[0], 10);
+      if (!isNaN(major)) {
+        if (major < 18) {
+          eolStatus = 'eol';
+          vulnerable = true;
+        } else if (major < 20) {
+          eolStatus = 'maintenance';
+        }
+      }
+
       const payload: HandshakePayload = {
         siteId,
         timestamp: Date.now(),
@@ -20,9 +34,14 @@ export function createWebKernelApiHandler(config: WebKernelConfig = {}) {
         status: 'active',
         version: '1.0.0',
         platform: 'Next.js',
+        runtime: {
+          nodeVersion,
+          eolStatus,
+          vulnerable,
+        },
         health: {
           status: siteId && pairingSecret ? 'healthy' : 'degraded',
-          uptime: process.uptime ? Math.floor(process.uptime()) : 0,
+          uptime: typeof process !== 'undefined' && process.uptime ? Math.floor(process.uptime()) : 0,
           wafEnabled: config.waf?.enabled !== false,
         },
       };
